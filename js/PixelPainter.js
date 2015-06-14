@@ -1,20 +1,24 @@
 function PixelPainter(width,height){
-var pixelPainterEl = document.getElementById('pixelPainter');
-var displayGridEl = document.createElement('canvas');
-displayGridEl.id = displayGridElId;
+var ppHtmlDisplayEl = document.getElementById('pixelPainter');
+var ppDisplayEl = document.createElement('div');
+ppDisplayEl.innerHTML = 'test';
 
-this.addBox = function(){
-  var boxDiv = document.createElement('div');
-  boxDiv.id = item;
-  boxDiv.className = 'dead'; //Alive for filled, dead for blank
-  boxDiv.style.top = 10;
-  boxDiv.style.left = 20;
-  displayGridEl.appendChild(boxDiv);
-  console.log('called');
-}
 
-this.addBox();
-pixelPainterEl.appendChild(displayGridEl);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ppHtmlDisplayEl.appendChild(ppDisplayEl);
 }
 
