@@ -1,19 +1,46 @@
 function PixelPainter(width,height){
-//////////////Nodes that interact with DOM///////////////////
+//////////////Main DOM Nodes & Variables///////////////////
 var TOTAL_PIXEL = width * height;
+var counter = 0;
+var ppTmpRow,singleBoxEl,i,j;
 var ppHtmlDisplayEl = document.getElementById('pixelPainter');
 var ppMainDisplayEl = document.createElement('div');
-var ppFragmentEl = document.createElement('fragment');
+var ppColorDisplayEl = document.createElement('div'); 
+var ppColorArray = ['black','blue','red','orange','green','yellow','aqua','white'];
+var ppColorRunner = 0;
+var currentColorSelected;
 /////////////////////////////////////////////////////////////
 
-for(var i = 0; i< height; i++){
-  var ppTmpRow = document.createElement('div');
-  for(var j = 0; j < width; j++){
-    var block = document.createElement('div');
-    block.className = 'ppBox';
-    ppTmpRow.appendChild(block);
+//Generates main grid and appends to MainDisplayEl
+for(i = 0; i< height; i++){
+  ppTmpRow = document.createElement('div');
+  
+  for(j = 0; j < width; j++){
+    //Creates individual boxes
+    singleBoxEl = document.createElement('div');
+    singleBoxEl.className = 'ppMainBox';
+    singleBoxEl.id = 'box' + counter;
+    counter++;
+    ppTmpRow.appendChild(singleBoxEl);
   }
   ppMainDisplayEl.appendChild(ppTmpRow);
+}
+
+counter = 0; // RESETS COUNTER;
+
+//Generates color grid and appends to ColorDisplayEl
+for(i = 0 ; i < 4; i++){
+  ppTmpRow = document.createElement('div');
+  for(j = 0; j < 2; j++){
+    singleBoxEl = document.createElement('div');
+    singleBoxEl.className = 'ppColorBox'
+    singleBoxEl.id = 'color'+counter;
+    singleBoxEl.style.background = ppColorArray[ppColorRunner];
+    ppColorRunner++;
+    counter++;
+    ppTmpRow.appendChild(singleBoxEl);
+  }
+  ppColorDisplayEl.appendChild(ppTmpRow);
 }
 
 
@@ -22,7 +49,7 @@ for(var i = 0; i< height; i++){
 
 
 
-ppMainDisplayEl.appendChild(ppFragmentEl);
+ppHtmlDisplayEl.appendChild(ppColorDisplayEl);
 ppHtmlDisplayEl.appendChild(ppMainDisplayEl);
 }
 
