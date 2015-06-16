@@ -58,12 +58,27 @@ for(i = 0 ; i < 4; i++){
   }
   ppColorDisplayEl.appendChild(ppTmpRow);
 }
-//Assigns color clicked to currentColorSelected;
+
+//Functionality Buttons
+var ppClearBtn = document.createElement('Button');
+    ppClearBtn.innerHTML = 'CLEAR';
+    ppClearBtn.addEventListener('click',function(){
+    for(i = 0; i< TOTAL_PIXEL; i++){
+      document.getElementById('box'+i).style.background='transparent';
+
+    }
+
+    })
+
+var ppEraseBtn = document.createElement('Button');
+    ppEraseBtn.innerHTML = 'ERASE';
+    ppEraseBtn.addEventListener('click',function(){
+    currentColorSelected = 'transparent';
+    });
 
 
-
-
-
+ppHtmlDisplayEl.appendChild(ppClearBtn);
+ppHtmlDisplayEl.appendChild(ppEraseBtn);
 ppHtmlDisplayEl.appendChild(ppColorDisplayEl);
 ppHtmlDisplayEl.appendChild(ppMainDisplayEl);
 }
