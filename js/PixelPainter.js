@@ -2,7 +2,7 @@ function PixelPainter(width,height){
 
 //////////////Main DOM Nodes & Variables///////////////////
 var gridRunner = 0;
-var colorRunner;
+var colorRunner = 0;
 var currentColorSelected;
 var ppHtmlDisplayEl = document.getElementById('pixelPainter');
 var ppMainDisplayEl = document.createElement('div');
@@ -63,8 +63,50 @@ for(i = 0; i< this.HEIGHT; i++){
 }
 
 //Generates Color Swatch
+for(i = 0 ; i <4 ; i++){
+  ppTmpRow = document.createElement('div');
+  for(j = 0; j < 4; j++){
+    singleBoxEl = document.createElement('div');
+
+    //Attributes
+    singleBoxEl.color = COLORSWATCH[colorRunner];
+    singleBoxEl.className = 'ppColorBox'
+    singleBoxEl.id = 'color'+gridRunner;
+    singleBoxEl.style.background = COLORSWATCH[colorRunner];
+
+    //On Click
+    singleBoxEl.addEventListener('click',function(){
+      currentColorSelected = this.color;
+    })
+
+    //Counters
+    colorRunner++;
+    gridRunner++;
+
+    ppTmpRow.appendChild(singleBoxEl);
+  }
+  ppColorDisplayEl.appendChild(ppTmpRow);
+}
+
+//Functionality Buttons
+var ppClearBtn = document.createElement('Button');
+    ppClearBtn.innerHTML = 'CLEAR';
+    ppClearBtn.addEventListener('click',function(){
+    for(i = 0; i< TOTAL_PIXEL; i++){
+      document.getElementById('box'+i).style.background='transparent';
+    }
+  });
+
+var ppEraseBtn = document.createElement('Button');
+    ppEraseBtn.innerHTML = 'ERASE';
+    ppEraseBtn.addEventListener('click',function(){
+    currentColorSelected = 'transparent';
+  });
 
 
+ppHtmlDisplayEl.appendChild(ppClearBtn);
+ppHtmlDisplayEl.appendChild(ppEraseBtn);
+ppHtmlDisplayEl.appendChild(ppColorDisplayEl);
 ppHtmlDisplayEl.appendChild(ppMainDisplayEl);
 }
 
