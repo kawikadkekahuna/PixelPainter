@@ -16,10 +16,15 @@ for(i = 0; i< height; i++){
   ppTmpRow = document.createElement('div');
   
   for(j = 0; j < width; j++){
-    //Creates individual boxes
+    //Attributes
     singleBoxEl = document.createElement('div');
     singleBoxEl.className = 'ppMainBox';
     singleBoxEl.id = 'box' + counter;
+
+    singleBoxEl.addEventListener('click',function(){
+      this.style.background = currentColorSelected;
+    })
+
     counter++;
     ppTmpRow.appendChild(singleBoxEl);
   }
@@ -33,17 +38,27 @@ for(i = 0 ; i < 4; i++){
   ppTmpRow = document.createElement('div');
   for(j = 0; j < 2; j++){
     singleBoxEl = document.createElement('div');
+
+    //Attributes
+    singleBoxEl.color = ppColorArray[ppColorRunner];
     singleBoxEl.className = 'ppColorBox'
     singleBoxEl.id = 'color'+counter;
     singleBoxEl.style.background = ppColorArray[ppColorRunner];
+
+    //On Click
+    singleBoxEl.addEventListener('click',function(){
+      currentColorSelected = this.color;
+    })
+
+    //Counters
     ppColorRunner++;
     counter++;
+
     ppTmpRow.appendChild(singleBoxEl);
   }
   ppColorDisplayEl.appendChild(ppTmpRow);
 }
-
-
+//Assigns color clicked to currentColorSelected;
 
 
 
