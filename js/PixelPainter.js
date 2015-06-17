@@ -1,7 +1,6 @@
 function PixelPainter(width,height){
 
 //////////////Main DOM Nodes & Variables///////////////////
-var TOTAL_PIXEL = WIDTH * HEIGHT;
 var gridRunner = 0;
 var colorRunner = 0;
 var currentColorSelected;
@@ -12,6 +11,8 @@ var WIDTH;
 var HEIGHT;
 var GRIDSIZE = 25; //Default 25
 var COLORSWATCH;
+
+
 /////////////////////////////////////////////////////////////
 
 switch(arguments.length){
@@ -37,7 +38,7 @@ switch(arguments.length){
       break;
     }
 }
-
+var TOTAL_PIXEL = this.WIDTH * this.HEIGHT;
 
 
 //Generates main grid and appends to MainDisplayEl
@@ -55,9 +56,15 @@ for(i = 0; i< this.HEIGHT; i++){
     singleBoxEl.id = 'box' + gridRunner;
 
     //Sets the bg to current color selected;
-    singleBoxEl.addEventListener('click',function(){
+
+    //****************EDDDDITTTT*********************/
+    singleBoxEl.addEventListener('mousedown',function(){
+      console.log(document.body.onmousedown);
       this.style.background = currentColorSelected;
-    });
+
+    },false);
+    
+
 
     gridRunner++;
     ppTmpRow.appendChild(singleBoxEl);
@@ -78,7 +85,7 @@ for(i = 0 ; i <this.COLORSWATCH.length / 6 ; i++){
     singleBoxEl.id = 'color'+gridRunner;
     singleBoxEl.style.background = this.COLORSWATCH[colorRunner];
 
-    //On Click
+    //Event Listener
     singleBoxEl.addEventListener('click',function(){
       currentColorSelected = this.color;
     })
@@ -107,7 +114,7 @@ var ppEraseBtn = document.createElement('Button');
     currentColorSelected = 'transparent';
   });
 
-
+console.log(TOTAL_PIXEL);
 ppHtmlDisplayEl.appendChild(ppClearBtn);
 ppHtmlDisplayEl.appendChild(ppEraseBtn);
 ppHtmlDisplayEl.appendChild(ppColorDisplayEl);
