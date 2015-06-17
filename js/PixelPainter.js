@@ -1,6 +1,7 @@
 function PixelPainter(width,height){
 
 //////////////Main DOM Nodes & Variables///////////////////
+var TOTAL_PIXEL = WIDTH * HEIGHT;
 var gridRunner = 0;
 var colorRunner = 0;
 var currentColorSelected;
